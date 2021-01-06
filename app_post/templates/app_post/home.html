@@ -1,0 +1,40 @@
+{% extends 'app_post/base.html' %}
+{% load static %}
+
+
+{% block title %} Blog {% endblock %}
+
+
+{% block content %}
+{% include 'app_post/navbar.html' %}
+
+<div class="container-lg">
+  <br>
+  <h2 style="text-align: center;">Your Posts</h2>
+  <br><br>
+  <!-- TODO: Put all the post by the user. -->
+  {% if posts %}
+    {% for post in posts %}
+    <div class="card text-white lg" id="post-card">
+      <div class="card-body">
+        <div class="title" style="display: flex; justify-content: space-between;align-items: center;">
+          <h5 class="card-title"><a  href="{% url 'post_detail' post.id %}" style="text-decoration: none; color: white;">{{ post.title }}</a></h5>
+          <div class="options">
+            <span style="margin-right: 30px;">{{ post.created }}</span>
+            <a href="{% url 'post_edit' post.id %}" class="btn btn-warning" style="color: white;"><i class="far fa-edit"></i></a>
+            <a href="{% url 'post_delete' post.id %}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+          </div>
+        </div>
+        <br>
+        <p class="card-text">{{ post.content|truncatechars:200 }}</p>
+      </div>   
+    </div>
+    <br><br>
+    {% endfor %}
+  {% else %}
+    <br><br>
+    <p style = "color: grey; font-family:sans-serif;">You have no story yet. <br>Write a new one</p>
+  {% endif %}
+</div>
+
+{% endblock %}

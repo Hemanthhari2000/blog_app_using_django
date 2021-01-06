@@ -1,0 +1,14 @@
+{% load static %}
+<div class="container-fluid">
+    <h1 class="logo"><a href="/">Blog</a></h1>
+    <ul class = "nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="{% url 'write' %}">Write</a></li>
+        <div class="user">
+            <span> Hello, {{ request.user }}</span>
+            <span><a href="{% url 'logout' %}">Logout</a></span>
+        </div>
+    </ul>
+    
+</div>

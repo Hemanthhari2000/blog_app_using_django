@@ -1,0 +1,34 @@
+{% extends 'app_post/base.html' %}
+{% load static %}
+
+
+{% block title %} Edit {% endblock %}
+
+{% block content %}
+
+{% include 'app_post/navbar.html' %}
+
+<div class="container-lg text-center">
+    <br>
+    <h2 style="text-align: center;">Edit</h2>
+    <hr><br>
+
+    <div class="card card-body">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-floating mb-3">
+                {{ form.title }}
+                <label for="titleInput">Title</label>
+            </div>
+            <div class="form-floating">
+                {{ form.content }}
+                <label for="contentInput">Content</label>
+            </div>
+            <br><br>
+            <a class = "btn btn-danger" href="/">Cancel</a>
+            <input class="btn btn-primary" type="submit" value=" Edit ">
+        </form>
+    </div>
+</div>  
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'app_post/base.html' %}
+{% load static %}
+
+
+{% block title %} Blog {% endblock %}
+
+
+{% block content %}
+{% include 'app_post/navbar.html' %}
+
+<div class="container-lg text-center">
+  <br>
+  <h2 style="text-align: center;">{{ post.title }}</h2>
+  <hr><br>
+  <!-- TODO: Put all the post by the user. -->
+  {% if post %}
+    <div class="card text-white bg-success lg overflow-auto" style="height: 400px;">
+        <div class="card-body">
+            <span class = 'fs-3'>{{ post.content }}</span>
+        </div>   
+    </div>
+    <br>
+  {% else %}
+    <br><br>
+    <p style = "color: grey; font-family:sans-serif;">Select a post</p>
+  {% endif %}
+  <a href="/" class="btn btn-primary" style="color: white;">back</a>
+  <br><br>
+</div>
+
+{% endblock %}
